@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Mother's Day!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to right, #ffecd2, #fcb69f);
+      color: #333;
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 20px;
+      background: #fff0f5;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    img.hero-img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #fff;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      margin-bottom: 20px;
+      animation: bounceIn 1.2s ease;
+    }
+
+    @keyframes bounceIn {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.05); opacity: 1; }
+      100% { transform: scale(1); }
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      font-size: 3rem;
+      color: #d6336c;
+    }
+
+    p.subtitle {
+      font-size: 1.2rem;
+      color: #555;
+      margin-bottom: 30px;
+    }
+
+    button {
+      background-color: #ff6b81;
+      border: none;
+      color: white;
+      padding: 14px 30px;
+      font-size: 1.1rem;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #ff4757;
+    }
+
+    .message-box {
+      margin-top: 30px;
+      display: none;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    .message-box p {
+      font-size: 1.2rem;
+      background-color: white;
+      padding: 15px;
+      border-radius: 15px;
+      margin: 10px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      animation: slideUp 0.6s ease;
+    }
+
+    .gallery {
+      display: none;
+      margin-top: 40px;
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    .gallery img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    .hearts {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .heart {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+      background-size: cover;
+      animation: floatHeart 5s linear infinite;
+    }
+
+    @keyframes floatHeart {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100vh) scale(1.2); opacity: 0; }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('https://cdn-icons-png.flaticon.com/512/833/833472.png');
+      background-size: cover;
+      animation: float 10s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0); }
+      100% { transform: translateY(-100vh) rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Flower Animation -->
+  <script>
+    for (let i = 0; i < 15; i++) {
+      const flower = document.createElement('div');
+      flower.classList.add('flower');
+      flower.style.left = `${Math.random() * 100}vw`;
+      flower.style.top = `${Math.random() * 100 + 100}vh`;
+      flower.style.animationDelay = `${Math.random() * 5}s`;
+      flower.style.transform = `scale(${Math.random() * 0.6 + 0.4})`;
+      document.body.appendChild(flower);
+    }
+  </script>
+
+  <div class="hearts" id="hearts"></div>
+
+  <div class="container">
+    <img src="momma.jpg" alt="Mom and Me" class="hero-img" />
+    <h1>Happy Mother's Day!</h1>
+    <p class="subtitle">You are the heart of our home 💖</p>
+
+    <button onclick="showMessages()">Click to Reveal My Love</button>
+
+    <div class="message-box" id="messages"></div>
+
+    <div class="gallery" id="gallery">
+      <h2 style="color: #d6336c; font-family: 'Pacifico', cursive;">Some of Our Special Moments 📸</h2>
+      <img src="group.jpg" alt="Memory 1" />
+      <img src="nishumummy.jpg" alt="Memory 2" />
+      <img src="papamummy.jpg" alt="Memory 3" />
+    </div>
+  </div>
+
+  <footer>Made with 💕 by your child</footer>
+
+  <script>
+    const messages = [
+      "You're my biggest inspiration.you have always been my support",
+      "Your love is my superpower.no matter how much i want to stay in my comfort zone you push me forward and motivate me to fight my fears.",
+      "No one makes me feel as safe as you do.",
+      "You are kindness, strength, and beauty combined.by listening to your stories of childhood, i have been inspired a lot. from the streets of the bombay to running a new hospital you have come a long way. thank you for everything",
+      "I’m so lucky to call you my mom. ❤️"
+    ];
+
+    function showMessages() {
+      const box = document.getElementById('messages');
+      const gallery = document.getElementById('gallery');
+      const hearts = document.getElementById('hearts');
+
+      if (box.style.display !== 'block') {
+        box.style.display = 'block';
+        messages.forEach((msg, index) => {
+          setTimeout(() => {
+            const p = document.createElement('p');
+            p.textContent = msg;
+            box.appendChild(p);
+
+            // Show gallery and hearts after last message
+            if (index === messages.length - 1) {
+              setTimeout(() => {
+                gallery.style.display = 'block';
+                hearts.style.display = 'block';
+                for (let i = 0; i < 30; i++) {
+                  const heart = document.createElement('div');
+                  heart.classList.add('heart');
+                  heart.style.left = `${Math.random() * 100}vw`;
+                  heart.style.top = `${Math.random() * 100}vh`;
+                  heart.style.animationDelay = `${Math.random() * 3}s`;
+                  hearts.appendChild(heart);
+                }
+              }, 1500);
+            }
+          }, index * 1200);
+        });
+      }
+    }
+  </script>
+
+</body>
+</html>
